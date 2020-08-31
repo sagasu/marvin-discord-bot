@@ -9,4 +9,19 @@ const { Client } = require('discord.js');
 
 const client = new Client();
 
+client.on('ready', () => {
+    console.log(`${client.user.username}`);
+    console.log(`${client.user.tag} has logged in`);
+});
+
+client.on('message', (message) => {
+    console.log(message.content);
+    console.log(message.author.tag);
+
+    if(message.content === 'hello'){
+        message.reply('hello there');
+        message.channel.send('whazzupp');
+    }
+});
+
 client.login(process.env.DISCORDJS_BOT_TOKEN);
