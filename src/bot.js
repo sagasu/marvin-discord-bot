@@ -8,6 +8,7 @@ require('dotenv').config();
 const { Client } = require('discord.js');
 
 const client = new Client();
+const prefix = "$";
 
 client.on('ready', () => {
     console.log(`${client.user.username}`);
@@ -15,6 +16,17 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
+    if(message.author.bot === true)
+        return;
+
+    if(message.content.startsWith(PREFIX)){
+        const [CMD_NAME, ...args] = message.content
+            .trim()
+            .substring(PREFIX.length)
+            .split(" ");
+        console.log(CMD_NAME);
+    }
+
     console.log(message.content);
     console.log(message.author.tag);
 
