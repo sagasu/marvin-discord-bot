@@ -24,7 +24,16 @@ client.on('message', (message) => {
             .trim()
             .substring(PREFIX.length)
             .split(" ");
-        console.log(CMD_NAME);
+
+        if(CMD_NAME === "kick"){
+            if(args.length < 1) return message.reply('provide a user name');
+            const member = message.guild.members.cache.get(args[0]);
+            if(member) {
+                member.kick();
+            }else{
+                message.channel.send('member not found');
+            }
+        }
     }
 
     console.log(message.content);
