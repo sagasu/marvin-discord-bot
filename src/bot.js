@@ -29,8 +29,10 @@ client.on('message', (message) => {
             if(args.length < 1) return message.reply('provide a user name');
             const member = message.guild.members.cache.get(args[0]);
             if(member) {
-                member.kick();
-            }else{
+                member.kick()
+                    .then(member => message.channel.send(`${member} was kicked.`))
+                    .catch(err => message.channel.send(`bot doesn't have permissions to kick the user`));
+                }else{
                 message.channel.send('member not found');
             }
         }
