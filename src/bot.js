@@ -38,8 +38,8 @@ client.on('message', (message) => {
         }
     }
 
-    console.log(message.content);
-    console.log(message.author.tag);
+    // console.log(message.content);
+    // console.log(message.author.tag);
 
     if(message.content === 'hello'){
         message.reply('hello there');
