@@ -38,9 +38,6 @@ client.on('message', (message) => {
         }
     }
 
-    // console.log(message.content);
-    // console.log(message.author.tag);
-
     if(message.content === 'hello'){
         message.reply('hello there');
         message.channel.send('whazzupp');
